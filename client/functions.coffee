@@ -3,40 +3,39 @@ Cloudinary =
 	_private_urls:{}
 	_expiring_urls:{}
 	xhr:null
-	_helpers:
-		"url": (public_id,options) ->
-			if public_id and not _.isEmpty public_id
-				$.cloudinary.url(public_id,options.hash)
+	url: (public_id,options) ->
+		if public_id and not _.isEmpty public_id
+			$.cloudinary.url(public_id,options.hash)
 
-		"private_url":(public_id,options) ->
+	private_url:(public_id,options) ->
+		private_url = Cloudinary._private_urls[public_id]
+		if not private_url
+			Cloudinary._private_urls[public_id] = new ReactiveVar ""
 			private_url = Cloudinary._private_urls[public_id]
-			if not private_url
-				Cloudinary._private_urls[public_id] = new ReactiveVar ""
-				private_url = Cloudinary._private_urls[public_id]
 
-			if public_id and not _.isEmpty(public_id) and _.isEmpty(private_url.get())
-				Meteor.call "c.get_private_resource",public_id,options.hash,(error,result) ->
-					if error
-						throw new Meteor.Error "Cloudinary","Failed to sign and fetch image"
-					else
-						private_url.set result
+		if public_id and not _.isEmpty(public_id) and _.isEmpty(private_url.get())
+			Meteor.call "c.get_private_resource",public_id,options.hash,(error,result) ->
+				if error
+					throw new Meteor.Error "Cloudinary","Failed to sign and fetch image"
+				else
+					private_url.set result
 
-			private_url.get()
+		private_url.get()
 
-		"expiring_url":(public_id,options) ->
+	expiring_url:(public_id,options) ->
+		expiring_url = Cloudinary._expiring_urls[public_id]
+		if not expiring_url
+			Cloudinary._expiring_urls[public_id] = new ReactiveVar ""
 			expiring_url = Cloudinary._expiring_urls[public_id]
-			if not expiring_url
-				Cloudinary._expiring_urls[public_id] = new ReactiveVar ""
-				expiring_url = Cloudinary._expiring_urls[public_id]
 
-			if public_id and not _.isEmpty(public_id) and _.isEmpty(expiring_url.get())
-				Meteor.call "c.get_download_url",public_id,options.hash,(error,result) ->
-					if error
-						throw new Meteor.Error "Cloudinary","Failed to sign and fetch image"
-					else
-						expiring_url.set result
+		if public_id and not _.isEmpty(public_id) and _.isEmpty(expiring_url.get())
+			Meteor.call "c.get_download_url",public_id,options.hash,(error,result) ->
+				if error
+					throw new Meteor.Error "Cloudinary","Failed to sign and fetch image"
+				else
+					expiring_url.set result
 
-			expiring_url.get()
+		expiring_url.get()
 
 
 	delete: (public_id, type, callback) ->
@@ -143,8 +142,3 @@ Cloudinary =
 			Cloudinary.xhr.open "POST",result.form_attrs.action,true
 
 			Cloudinary.xhr.send form_data
-
-
-# Define helpers
-Template.registerHelper "c", ->
-	Cloudinary._helpers

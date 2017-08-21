@@ -15,7 +15,6 @@ Package.on_use(function (api){
 
 	// Core Packages
 	api.use(["meteor-base@1.0.1","coffeescript","mongo","underscore"], ["client", "server"]);
-	api.use(["templating"], "client");
 	api.use(["check","random","reactive-var"], ["client","server"]);
 
 	// External Packages
