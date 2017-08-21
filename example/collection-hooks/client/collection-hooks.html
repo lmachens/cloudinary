@@ -31,8 +31,8 @@
 	<h3>Saved images</h3>
 	{{#each saved_images}}
 		<br>
-		<img width="250" src="{{secure_url}}">
-		<img width="250" src="{{c.url public_id format=format effect='blur:300' angle=10}}">
+		<img width="250" src="{{Cloudinary.private_url}}">
+		<img width="250" src="{{Cloudinary.url public_id format=format effect='blur:300' angle=10}}">
 		<button class="delete">Delete</button>
 	{{/each}}
 

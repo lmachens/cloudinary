@@ -15,9 +15,9 @@ template(name="tester")
 
 	h5 uploaded files
 	each uploaded_images
-		img(src="{{c.url public_id effect='blur:300' angle=10}}")
-		img(src="{{c.private_url public_id effect='blur:300' angle=10}}")
-		img(src="{{c.expiring_url public_id}}")
+		img(src="{{Cloudinary.url public_id effect='blur:300' angle=10}}")
+		img(src="{{Cloudinary.private_url public_id effect='blur:300' angle=10}}")
+		img(src="{{Cloudinary.expiring_url public_id}}")
 
 		button.delete Delete
 		button.delete_private Delete Private
@@ -26,9 +26,9 @@ template(name="tester")
 	//- 	p {{percent_uploaded}} %
 	//- 	p {{response.public_id}}
 	//- 	if complete
-	//- 		img(src="{{c.url response.public_id effect='blur:300' angle=10}}")
-	//- 		img(src="{{c.private_url response.public_id effect='blur:300' angle=10}}")
-	//- 		img(src="{{c.expiring_url response.public_id format='jpg' effect='blur:300' angle=10}}")
+	//- 		img(src="{{Cloudinary.url response.public_id effect='blur:300' angle=10}}")
+	//- 		img(src="{{Cloudinary.private_url response.public_id effect='blur:300' angle=10}}")
+	//- 		img(src="{{Cloudinary.expiring_url response.public_id format='jpg' effect='blur:300' angle=10}}")
 
 	//- 	button.delete Delete
 	//- 	button.delete_private Delete Private
