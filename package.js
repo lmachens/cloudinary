@@ -1,7 +1,7 @@
 Package.describe({
 	name:"lmachens:cloudinary",
 	summary: "Upload files to Cloudinary",
-	version:"4.2.6",
+	version:"5.0.0",
 	git:"https://github.com/lmachens/cloudinary"
 });
 
