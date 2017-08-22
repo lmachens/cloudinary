@@ -4,7 +4,7 @@ Cloudinary =
 	_expiring_urls:{}
 	xhr:null
 	config: (options) ->
-	  $.cloudinary.options options
+	  $.cloudinary.config options
 	url: (public_id,options) ->
 		if public_id and not _.isEmpty public_id
 			$.cloudinary.url(public_id,options.hash)
