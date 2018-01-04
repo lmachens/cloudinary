@@ -1,4 +1,4 @@
-`import cloudinary from 'cloudinary-core'`
+cloudinary = require 'cloudinary-core'
 
 cl = cloudinary.Cloudinary.new()
 
