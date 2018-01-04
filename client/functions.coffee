@@ -1,4 +1,4 @@
-`import cloudinary from 'cloudinary-core';`
+`import cloudinary from 'cloudinary-core'`
 
 cl = cloudinary.Cloudinary.new()
 
