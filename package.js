@@ -15,7 +15,7 @@ Package.on_use(function (api){
 
 	// Core Packages
 	api.use(["meteor-base@1.0.1","coffeescript","mongo","underscore"], ["client", "server"]);
-	api.use(["check","ecmascript","random","reactive-var"], ["client","server"]);
+	api.use(["check","ecmascript@0.9.0","random","reactive-var"], ["client","server"]);
 
 	// External Packages
 	api.use(["matb33:collection-hooks@0.7.3","audit-argument-checks"], ["client", "server"],{weak:true});
