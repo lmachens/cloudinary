@@ -1,13 +1,16 @@
+cloudinary = require 'cloudinary-core'
+cl = cloudinary.Cloudinary.new()
+
 Cloudinary =
 	collection: new Mongo.Collection "_cloudinary", connection:null
 	_private_urls:{}
 	_expiring_urls:{}
 	xhr:null
 	config: (options) ->
-	  $.cloudinary.config options
+	  cl.config options
 	url: (public_id,options) ->
 		if public_id and not _.isEmpty public_id
-			$.cloudinary.url(public_id,options)
+			cl.url(public_id,options)
 
 	private_url:(public_id,options) ->
 		private_url = Cloudinary._private_urls[public_id]
