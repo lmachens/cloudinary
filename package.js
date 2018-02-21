@@ -1,13 +1,13 @@
 Package.describe({
 	name:"lmachens:cloudinary",
 	summary: "Upload files to Cloudinary",
-	version:"5.0.4_4",
+	version:"5.0.5",
 	git:"https://github.com/lmachens/cloudinary"
 });
 
 Npm.depends({
-	cloudinary: "1.9.1", // Server side
-	"cloudinary-core": "2.4.0" // Client side
+	cloudinary: "1.10.0", // Server side
+	"cloudinary-core": "2.5.0" // Client side
 });
 
 Package.on_use(function (api){
